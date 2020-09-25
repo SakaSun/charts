@@ -1,0 +1,13 @@
+apiVersion: v1
+entries:
+  duckdns:
+  - apiVersion: v2
+    created: "2020-09-24T23:51:42.0343137-03:00"
+    description: A Helm chart for DuckDNS
+    digest: 08f5d16849622a5089334542fc103b5a95dc67fe1c3a08b3b4a0119a6b457018
+    name: duckdns
+    type: application
+    urls:
+    - duckdns-0.1.0.tgz
+    version: 0.1.0
+generated: "2020-09-24T23:51:42.0328942-03:00"
