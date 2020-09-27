@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "generic-app.fullname" . }}
+  name: {{ include "generic-app.name" . }}
   labels:
     {{- include "generic-app.labels" . | nindent 4 }}
 spec:
@@ -132,8 +132,49 @@ spec:
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
           {{- end }}
+          {{- if or .Values.persistentVolumeClaims .Values.configMaps .Values.volumes .Values.extraVolumeMounts }}
+          volumeMounts:
+            {{- range .Values.persistentVolumeClaims }}
+            - mountPath: {{ .mountPath }}
+              name: {{ .name }}
+              {{- if .subPath }}
+              subPath: {{ .subPath }}
+              {{- end }}
+            {{- end }}
+            {{- range $cm := .Values.configMaps }}
+              {{- if $cm.mountPath }}
+                {{- if $cm.mountSubPath }}
+                  {{- range $key, $val := $cm.data }}
+            - mountPath: {{ $cm.mountPath }}/{{ $key }}
+              name: {{ $cm.name }}
+              subPath: {{ $key }}
+                  {{- end }}
+                {{- else }}
+            - mountPath: {{ $cm.mountPath }}
+              name: {{ $cm.name }}
+                {{- end }}
+              {{- end }}
+            {{- end }}
+            {{- range $pv := .Values.volumes }}
+            - mountPath: {{ $pv.mountPath }}
+              name: {{ $pv.name }}
+              {{- if $pv.readOnly }}
+              readOnly: {{ $pv.readOnly }}
+              {{- end }}
+            {{- end }}
+            {{- with .Values.extraVolumeMounts }}
+              {{- toYaml . | nindent 12 }}
+            {{- end }}
+          {{- end }}
       {{- if or .Values.configMaps .Values.volumes }}
       volumes:
+        {{- range .Values.persistentVolumeClaims }}
+          {{- if .mountPath }}
+        - name: {{ .name }}
+          persistentVolumeClaim:
+            claimName: {{ .claimName | default (printf "%s-%s" (include "generic-app.name" $) .name) }}
+          {{- end }}
+        {{- end }}
         {{- range .Values.configMaps }}
           {{- if .mountPath }}
         - name: {{ .name }}
@@ -141,7 +182,6 @@ spec:
             name: {{ $.Release.Name }}-{{ .name }}
           {{- end }}
         {{- end }}
-
         {{- range .Values.volumes }}
         - name: {{ .name }}
           {{- toYaml (required (printf "No spec defined in volume name '%s'" .name) .spec) | nindent 10 -}}

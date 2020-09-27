@@ -3,7 +3,7 @@
 Expand the name of the chart.
 */}}
 {{- define "generic-app.name" -}}
-{{- default .Chart.Name .Values.nameOverride | trunc 63 | trimSuffix "-" }}
+{{- default .Release.Name .Values.nameOverride | trunc 63 | trimSuffix "-" }}
 {{- end }}
 
 {{/*
@@ -48,7 +48,6 @@ Selector labels
 */}}
 {{- define "generic-app.selectorLabels" -}}
 app.kubernetes.io/name: {{ include "generic-app.name" . }}
-app.kubernetes.io/instance: {{ .Release.Name }}
 {{- end }}
 
 {{/*
@@ -56,7 +55,7 @@ Create the name of the service account to use
 */}}
 {{- define "generic-app.serviceAccountName" -}}
 {{- if .Values.serviceAccount.create }}
-{{- default (include "generic-app.fullname" .) .Values.serviceAccount.name }}
+{{- default (include "generic-app.name" .) .Values.serviceAccount.name }}
 {{- else }}
 {{- default "default" .Values.serviceAccount.name }}
 {{- end }}

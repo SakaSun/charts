@@ -85,6 +85,17 @@ autoscaling:
   targetCPUUtilizationPercentage: 80
   # targetMemoryUtilizationPercentage: 80
 
+persistentVolumeClaims:
+  - name: data
+    mountPath: /data
+    subPath: config
+    annotations: 
+      key: "value"
+    accessModes:
+      - ReadWriteOnce
+    storageClass: local-path
+    size: 10Mi
+  
 volumes:
   - name: nfs
     spec:

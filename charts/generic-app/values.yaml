@@ -124,6 +124,16 @@ autoscaling:
   targetCPUUtilizationPercentage: 80
   # targetMemoryUtilizationPercentage: 80
 
+persistentVolumeClaims: []
+  # - name: data
+  #   mountPath: /data
+  #   subPath: config
+  #   annotations: {}
+  #   accessModes:
+  #     - ReadWriteOnce
+  #   storageClass: local-path
+  #   size: 10Mi
+
 volumes: []
 
 hostNetwork: false
