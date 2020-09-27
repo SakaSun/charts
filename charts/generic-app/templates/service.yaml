@@ -1,0 +1,22 @@
+{{- if .Values.service.ports }}
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "generic-app.fullname" . }}
+  labels:
+    {{- include "generic-app.labels" . | nindent 4 }}
+spec:
+  type: {{ .Values.service.type }}
+  ports:
+    {{- range .Values.service.ports }}
+    - name: {{ .name }}
+      targetPort: {{ .name }}
+      protocol: {{ default "TCP" .protocol }}
+      port: {{ .port }}
+      {{- if .nodePort }}
+      nodePort: {{ .nodePort }}
+      {{- end}}
+    {{- end }}
+  selector:
+    {{- include "generic-app.selectorLabels" . | nindent 4 }}
+{{- end }}
