@@ -1,6 +1,0 @@
-apiVersion: v2
-name: duckdns
-description: A Helm chart for DuckDNS
-
-type: application
-version: 0.1.0
