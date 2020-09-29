@@ -1,19 +1,9 @@
 apiVersion: v1
 entries:
-  duckdns:
-  - apiVersion: v2
-    created: "2020-09-27T04:49:17.942347127-03:00"
-    description: A Helm chart for DuckDNS
-    digest: 08f5d16849622a5089334542fc103b5a95dc67fe1c3a08b3b4a0119a6b457018
-    name: duckdns
-    type: application
-    urls:
-    - duckdns-0.1.0.tgz
-    version: 0.1.0
   generic-app:
   - apiVersion: v2
     appVersion: latest
-    created: "2020-09-27T04:49:17.952716799-03:00"
+    created: "2020-09-29T17:20:05.882530019-03:00"
     description: A Helm chart for Kubernetes
     digest: 8de44ff648aad5603198f53db0184c92b7aa264bb4a78bdf5d1c1c8abb91321f
     name: generic-app
@@ -23,7 +13,7 @@ entries:
     version: 0.2.0
   - apiVersion: v2
     appVersion: latest
-    created: "2020-09-27T04:49:17.947743228-03:00"
+    created: "2020-09-29T17:20:05.864352782-03:00"
     description: A Helm chart for Kubernetes
     digest: 83aeba60901c82c4880e0b7ac1dac14c5df76bf996f2dc257d794d9bc2f19dc3
     name: generic-app
@@ -31,4 +21,4 @@ entries:
     urls:
     - generic-app-0.1.0.tgz
     version: 0.1.0
-generated: "2020-09-27T04:49:17.937006029-03:00"
+generated: "2020-09-29T17:20:05.852967495-03:00"
