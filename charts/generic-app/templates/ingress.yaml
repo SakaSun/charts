@@ -27,7 +27,7 @@ spec:
       http:
         paths:
           {{- range .paths }}
-          - path: {{ . }}
+          - path: {{ .path }}
             backend:
               serviceName: {{ $name }}
               servicePort: {{ default (mustFirst $.Values.service.ports).name .servicePort }}
