@@ -3,9 +3,9 @@ entries:
   generic-app:
   - apiVersion: v2
     appVersion: latest
-    created: "2020-09-29T17:20:05.882530019-03:00"
+    created: "2020-09-29T18:01:09.798021154-03:00"
     description: A Helm chart for Kubernetes
-    digest: 8de44ff648aad5603198f53db0184c92b7aa264bb4a78bdf5d1c1c8abb91321f
+    digest: 44473d52378c623264c58708357828c883935658ed0a16c3792fa1dc51d2f374
     name: generic-app
     type: application
     urls:
@@ -13,7 +13,7 @@ entries:
     version: 0.2.0
   - apiVersion: v2
     appVersion: latest
-    created: "2020-09-29T17:20:05.864352782-03:00"
+    created: "2020-09-29T18:01:09.797243892-03:00"
     description: A Helm chart for Kubernetes
     digest: 83aeba60901c82c4880e0b7ac1dac14c5df76bf996f2dc257d794d9bc2f19dc3
     name: generic-app
@@ -21,4 +21,4 @@ entries:
     urls:
     - generic-app-0.1.0.tgz
     version: 0.1.0
-generated: "2020-09-29T17:20:05.852967495-03:00"
+generated: "2020-09-29T18:01:09.796308722-03:00"
