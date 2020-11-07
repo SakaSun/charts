@@ -158,6 +158,9 @@ spec:
             {{- range $pv := .Values.volumes }}
             - mountPath: {{ $pv.mountPath }}
               name: {{ $pv.name }}
+              {{- if .subPath }}
+              subPath: {{ .subPath }}
+              {{- end }}
               {{- if $pv.readOnly }}
               readOnly: {{ $pv.readOnly }}
               {{- end }}
