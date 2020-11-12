@@ -48,7 +48,7 @@ service:
   type: ClusterIP
   ports:
     - name: http
-      targetPort: http
+      targetPort: 8080
       protocol: TCP
       port: 80
       nodePort: 31000
@@ -60,7 +60,8 @@ ingress:
     # kubernetes.io/tls-acme: "true"
   hosts:
     - host: chart-example.local
-      paths: []
+      paths: 
+        - path: /
   tls: []
   #  - secretName: chart-example-tls
   #    hosts:
@@ -102,7 +103,9 @@ volumes:
     subPath: path
     spec:
       nfs:
-        server: 132
+        server: 10.10.10.10
+        path: share
+
 nodeSelector: {}
 
 tolerations: []
