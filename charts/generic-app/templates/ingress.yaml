@@ -1,6 +1,6 @@
 {{- if and .Values.ingress.enabled .Values.service.ports -}}
 {{- $name := include "generic-app.name" . -}}
-apiVersion: networking.k8s.io/v1beta1
+apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: {{ $name }}

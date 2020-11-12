@@ -98,6 +98,8 @@ persistentVolumeClaims:
   
 volumes:
   - name: nfs
+    mountPath: /nfs
+    subPath: path
     spec:
       nfs:
         server: 132

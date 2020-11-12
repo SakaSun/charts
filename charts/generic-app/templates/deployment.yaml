@@ -135,8 +135,8 @@ spec:
           {{- if or .Values.persistentVolumeClaims .Values.configMaps .Values.volumes .Values.extraVolumeMounts }}
           volumeMounts:
             {{- range .Values.persistentVolumeClaims }}
-            - mountPath: {{ .mountPath }}
-              name: {{ .name }}
+            - mountPath: {{ .mountPath | required "PersistentVolumeClaim mountPath is required!" }}
+              name: {{ .name | required "PersistentVolumeClaim name is required!" }}
               {{- if .subPath }}
               subPath: {{ .subPath }}
               {{- end }}
@@ -155,14 +155,14 @@ spec:
                 {{- end }}
               {{- end }}
             {{- end }}
-            {{- range $pv := .Values.volumes }}
-            - mountPath: {{ $pv.mountPath }}
-              name: {{ $pv.name }}
-              {{- if $pv.subPath }}
-              subPath: {{ $pv.subPath }}
+            {{- range .Values.volumes }}
+            - mountPath: {{ .mountPath | required "Volume mountPath is required!" }}
+              name: {{ .name | required "Volume name is required!" }}
+              {{- if .subPath }}
+              subPath: {{ .subPath }}
               {{- end }}
-              {{- if $pv.readOnly }}
-              readOnly: {{ $pv.readOnly }}
+              {{- if .readOnly }}
+              readOnly: {{ .readOnly }}
               {{- end }}
             {{- end }}
             {{- with .Values.extraVolumeMounts }}
@@ -186,7 +186,7 @@ spec:
           {{- end }}
         {{- end }}
         {{- range .Values.volumes }}
-        - name: {{ .name }}
+        - name: {{ .name | required "Volume name is required!" }}
           {{- toYaml (required (printf "No spec defined in volume name '%s'" .name) .spec) | nindent 10 -}}
         {{- end }}
       {{- end }}
