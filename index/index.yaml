@@ -3,12 +3,12 @@ entries:
   generic-chart:
   - apiVersion: v2
     appVersion: latest
-    created: "2020-12-31T01:25:16.702046-03:00"
+    created: "2021-08-15T20:14:08.9495547-03:00"
     description: A Helm chart for Kubernetes
-    digest: 0613a4be0fef1d80aa69a90fe91fe305d9b02269e9fe72f55531aca668996a64
+    digest: 758f0965b4cc263c1a8d7193fec26783f81202b1e8acefe0220e6e3d994c947f
     name: generic-chart
     type: application
     urls:
     - generic-chart-0.1.0.tgz
     version: 0.1.0
-generated: "2020-12-31T01:25:16.7016622-03:00"
+generated: "2021-08-15T20:14:08.9491629-03:00"
