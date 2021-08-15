@@ -24,8 +24,10 @@ spec:
   resources:
     requests:
       storage: "{{ .size }}"
+{{/*
   selector:
     matchLabels:
       {{- include "generic-app.selectorLabels" $ | nindent 6 }}
+*/}}
 {{- end -}}
 {{- end -}}
