@@ -3,7 +3,17 @@ entries:
   generic-chart:
   - apiVersion: v2
     appVersion: latest
-    created: "2021-08-15T20:14:08.9495547-03:00"
+    created: "2021-08-15T22:21:42.173118-03:00"
+    description: A Helm chart for Kubernetes
+    digest: d94026b5806293cee7e97bbb5874707d0603c5c2482206b7df7ea78615ea5641
+    name: generic-chart
+    type: application
+    urls:
+    - generic-chart-0.2.0.tgz
+    version: 0.2.0
+  - apiVersion: v2
+    appVersion: latest
+    created: "2021-08-15T22:21:42.172815-03:00"
     description: A Helm chart for Kubernetes
     digest: 758f0965b4cc263c1a8d7193fec26783f81202b1e8acefe0220e6e3d994c947f
     name: generic-chart
@@ -11,4 +21,4 @@ entries:
     urls:
     - generic-chart-0.1.0.tgz
     version: 0.1.0
-generated: "2021-08-15T20:14:08.9491629-03:00"
+generated: "2021-08-15T22:21:42.172402-03:00"
