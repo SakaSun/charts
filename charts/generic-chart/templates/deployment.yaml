@@ -169,7 +169,7 @@ spec:
               {{- toYaml . | nindent 12 }}
             {{- end }}
           {{- end }}
-      {{- if or .Values.configMaps .Values.volumes }}
+      {{- if or .Values.configMaps .Values.volumes .Values.persistentVolumeClaims }}
       volumes:
         {{- range .Values.persistentVolumeClaims }}
           {{- if .mountPath }}
